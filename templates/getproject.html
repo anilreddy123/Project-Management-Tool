@@ -1,0 +1,13 @@
+
+{% extends 'home.html' %}
+
+{% block projects %}
+        {% for project in projects %}
+
+             <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/gettask">{{ project.project_title }}</a>
+                            </li>
+                        </ul>
+{% endfor %}
+{% endblock %}

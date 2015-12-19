@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block content %}
+    <html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+      <title>Project Management Tool</title>
+    <link rel="icon" href="/media/images/hexa.jpg" />
+    <!-- Bootstrap core CSS -->
+    <link href="/media/bootstrap.css" rel="stylesheet">
+
+    <link href="/media/signup/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLE CSS -->
+    <link href="/media/signup/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="/media/signup/css/style.css" rel="stylesheet" />
+    <!-- GOOGLE FONT -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+  </head>
+  <body>
+    <div class="jumbotron" style="height:92%;background-image: url(/media/images/bg7.jpg);background-repeat: no-repeat;background-size:100% 100% ">
+        <div class="container-fluid" style="">
+	        <div class="col-sm-8">
+
+            </div>
+
+            <div class="col-sm-4">
+                <div class="pnel panel-default" style="background-color:grey; margin:0px 20px 0px 20px;margin-top:50px">
+                    <div class="panel-heading" style="background-color:lightgreen">
+                        <strong> Log In </strong>
+                    </div>
+                    <div class="panel-body">
+                         {% if form.errors %}
+                            <p>Your username and password didn't match.Please try again.</p>
+                        {% endif %}
+                        <form role="form" method="post" action=".">{% csrf_token %}
+                            <br/>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                                <input type="text" class="form-control" placeholder="User Id" {{ form.username }}
+                            </div>
+
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                                <input type="password" class="form-control" placeholder="Enter Password"  {{ form.password }}
+                            </div>
+                            <div align="right">
+                                <input type="submit" value="Log In" class="btn btn-success " style="border-color:#2e6da4;background-color: #2e6da4;"/>
+                                <input type="hidden" name="next" value="/home" />
+                            </div>
+                        </form><hr/>
+                        <div class="signup" style="text-align: center;margin-top:15px;">
+                             New member <a href="/register" role="button" style="text-decoration:none">register</a> here.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+        document.getElementById('id_username').focus()
+    </script>
+
+    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY  -->
+    <script src="/media/signup/plugins/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="/media/signup/plugins/bootstrap.js"></script>
+
+<div id="footer-sec" style="background-color: black;height:8%;margin-top:-30px">
+      <footer class="container-fluid footer_main_div">
+            <h4 style="text-align: center;color: white">Copyright © 2015 HexaLearn | All Rights Reserved |</h4>
+
+      </footer>
+
+  </div>
+
+  </body>
+</html>
+
+{% endblock %}
+
+
+
+

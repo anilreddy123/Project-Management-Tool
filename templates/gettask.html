@@ -1,0 +1,119 @@
+{% extends 'home.html' %}
+{% block projects %}
+        {% for project in projects %}
+
+             <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/gettask">{{ project.project_title }}</a>
+                            </li>
+                        </ul>
+{% endfor %}
+{% endblock %}
+
+{% block tasks %}
+    <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                     <i class="fa fa-thumbs-down fa-2x" style="color:#333"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">26</div>
+                                        <div>Remaining!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-1 col-md-3">
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-green" style="background-color:#4cae4c">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-tasks fa-2x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">12</div>
+                                        <div>In Progress!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-1 col-md-3">
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow" style="background-color:red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                       <i class="fa fa-thumbs-up fa-2x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">124</div>
+                                        <div>Done!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+    </div><hr/>
+
+    <h3 style="border-bottom: solid lightblue;color:black;margin-bottom: 1px">Task List</h3>
+        <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead class="thead-inverse" style="background-color: skyblue;color:white;">
+                                <tr>
+                                    <th  style="text-align:center;" >Title</th>
+								<th style="text-align:center;">Date</th>
+								<th style="text-align:center;">Assign To</th>
+								<th style="text-align:center;">Manage</th>
+								<th style="text-align:center;">Completed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                             {% for task in tasks %}
+                                <tr style="border-bottom: 1px solid silver;background-color:lavender;">
+								<td><a href = "#" style="text-decoration: none">{{ task.taskname }}.</a></td>
+								<td style="text-align:center;">{{ task.created }}</td>
+								<td style="text-align:center;">{{ user.username |title }}</td>
+								<td style="text-align:center;"><a href="#" class="ico del">Delete</a>/<a href="#" class="ico edit">Edit</a></td>
+								<td style="text-align:center;"><input type="checkbox" class="checkbox" style="margin-left: 56px;"></td>
+                            </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+        </div>
+
+{% endblock %}
+
