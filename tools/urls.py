@@ -14,6 +14,6 @@ urlpatterns = patterns('',
     url(r'^addtask/$', addtask),
 
     url(r'^getproject/$', get_project),
-    url(r'^gettask/$', get_task),
+    url(r'^gettask/(\d+)/$', get_task),
 
 )

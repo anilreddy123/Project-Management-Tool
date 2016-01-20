@@ -13,6 +13,7 @@ from django.template.loader import render_to_string
 from django.template import RequestContext
 
 
+
 @csrf_protect
 def register(request):
     if request.method == 'POST':
@@ -44,20 +45,21 @@ def home(request):
     return render_to_response('home.html',{'user':request.user})
 
 
-@csrf_protect
+
 def addproject(request):
     if request.method == 'POST':
         form = ProjectsForm(request.POST)
-        if form.is_valid():
+        if True: #form.is_valid():
            #user = register.POST.get('user','')
-           project_title  = request.POST.get('project_title','')
-           project_description = request.POST.get('project_description','')
-           project_creation_date = request.POST.get('project_creation_date','')
+           project_title  = request.POST['p_title']
+           project_description = request.POST['p_desc']
+           project_creation_date = datetime.now() #request.POST.get('project_creation_date','')
            #start_date = request.POST.get('start_date','')
            #end_date = request.POST.get('end_date','')
            project_obj = Projects(project_title = project_title,project_description = project_description,project_creation_date = project_creation_date)
            project_obj.save()
-           return HttpResponse('hiii')
+
+           return HttpResponse('project created')
 
     else:
         # If the request was not a POST, display the form to enter details.
@@ -96,14 +98,18 @@ def get_project(request):
 
 
 @csrf_protect
-def get_task(request):
+def get_task(request, id=None):
     print "Here gettask"
     #get_user = User.objects.get(user=request.user)
     get_projects = Projects.objects.filter(user = request.user)
-    tasks = Task.objects.filter(project = get_projects)
+    if id is not None:
+        tasks = Task.objects.filter(project = id)
+    else:
+        tasks = Task.objects.filter(project = get_projects[0])
 
     html = render_to_string("gettask.html", {'projects':get_projects, 'tasks':tasks, 'user':request.user    })
     return HttpResponse(html)
+
 
 
 

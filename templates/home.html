@@ -103,7 +103,7 @@
 		                    </div> -->
                         <div class="modal-footer">
 
-                        <button type="submit" class="btn  add_project_new">Create</button>
+                        <button id="create" type="button" class="btn  add_project_new">Create</button>
                         <button type="button" class="btn " data-dismiss="modal">Close</button>
 
                         </div>
@@ -245,9 +245,23 @@
   ga('create', 'UA-58127580-1', 'auto');
   ga('send', 'pageview');
 
+$("#create").click(function(){
 
+    data = $("#ProjectForm").serialize();
+    $.ajax({
+        url:"/addproject/",
+        method:"POST",
+        data:data,
+        success:function(res){
+            alert(res);
+        }
+
+            });
+
+});
 
 </script>
+
 
 </body>
 </html>
