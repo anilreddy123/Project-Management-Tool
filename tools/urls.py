@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     #url(r'^createteam/$', create_team),
     url(r'^addproject/$', addproject),
     url(r'^addtask/$', addtask),
-
+    url(r'^delete_task/(\d+)/$', delete_task),
     url(r'^getproject/$', get_project),
     url(r'^gettask/(\d+)/$', get_task),
 

@@ -111,6 +111,8 @@ def get_task(request, id=None):
     return HttpResponse(html)
 
 
-
+def delete_task(request, id=None):
+    del_task = Task.objects.get(id = id).delete()
+    return HttpResponseRedirect("/getproject")
 
 
