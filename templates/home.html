@@ -252,8 +252,9 @@ $("#create").click(function(){
         url:"/addproject/",
         method:"POST",
         data:data,
-        success:function(res){
-            alert(res);
+        success:function(response){
+             $('.modal-content').html(response); // should check if with validation errors
+           $('#AddModal').modal("hide");
         }
 
             });
