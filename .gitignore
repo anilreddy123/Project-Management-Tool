@@ -1,1 +1,24 @@
+# Translations
+*.mo
+*.pot
 
+# Pycharm
+.idea
+
+# Vim
+
+*~
+*.swp
+*.swo
+
+# npm
+node_modules/
+
+# Compass
+.sass-cache
+
+# virtual environments
+.env
+
+# Ignore SQLite Database
+db.sqlite3
