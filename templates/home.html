@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project Management Tool</title>
-    <link rel="icon" href="/media/images/hexa.jpg" />
+
     <!-- BOOTSTRAP STYLES-->
     <link href="/media/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
@@ -89,6 +89,19 @@
 			                <label for="project title">Project Description</label>
 			                <input type="text"  class="form-control p_desc" id="exampleInputEmail1" placeholder="Describe Project" name="p_desc">
 		                </div>
+                          <div class="form-group">
+		                    <label for="project title">Assigned To</label>
+
+		                    <select class="assign assignee btn" name="p_assign">
+                            <option value="user">Assign To</option>
+                             <ul>{% for u in user_list %}
+				                 <li><option value="{{u.username}}">{{u.username}} </option></li>
+
+                              {% endfor %}
+                             </ul>
+                            </select>
+
+		                </div>
 		                <!--<div class="form-group">
 			            <label for="exampleInputEmail1">Project Duration</label>
 			                <input type="text" class="form-control p_dura" id="exampleInputEmail1" placeholder="Please provide in terms of weeks like: 5 or 7" name="p_dura">
@@ -101,6 +114,7 @@
 			                <label for="exampleInputPassword1">End Date</label>
 			                    <input type="datetime-local"  class="form-control p_edate" id="exampleInputPassword1" placeholder="End Date" name="p_edate">
 		                    </div> -->
+
                         <div class="modal-footer">
 
                         <button id="create" type="button" class="btn  add_project_new">Create</button>
@@ -142,17 +156,16 @@
 		                </div>
 		                <div class="form-group">
 		                    <label for="project title">Assigned To</label>
+
 		                    <select class="assign assignee btn" name="t_assign">
-				            <option value="Assign To">Assign To</option>
-				                {% for u in user.all %}
-                                    {{u.username}}
-				                {% endfor %}
-		                    </select>
-                        <ul>
-                            {% for u in user_list %}
-                            <li class="user">{{ u }}</li>
-                            {% endfor %}
-                            </ul>
+                            <option value="user">Assign To</option>
+                             <ul>{% for u in user_list %}
+				                 <li><option value="{{u.username}}">{{u.username}} </option></li>
+
+                              {% endfor %}
+                             </ul>
+                            </select>
+
 		                </div>
                         <div class="modal-footer">
 
@@ -193,7 +206,7 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 style="color:black">Dashboard</h1><hr/>
+                        <h1 style="color:#000000">Dashboard...</h1><hr/>
 
 
                         <!-- for tasks-->{% block tasks %}
@@ -203,8 +216,7 @@
                                          For project managers, this tool will come very handy with the functionalities like create project , assign tasks for admin user and  normal user will get know what projects, tasks assigned to him etc...
                                         Technologies used to design and develop this application are Django frameweork(1.7), HTML, CSS and Bootstrap</h2>--->
 
-                                                    <h3> This is a project management web application.
-                                       Technologies used to design and develop this application are Django frameweork(1.7), HTML, CSS and Bootstrap</h3>
+
 
                                 </div>
 
@@ -221,7 +233,7 @@
     </div><!-- /. WRAPPER  -->
 
     <div id="footer-sec" align="center">
-        Copyright © 2015 ******| All Rights Reserved |
+        Copyright © 2016 ******| All Rights Reserved |
     </div>
 
 
@@ -252,8 +264,11 @@ $("#create").click(function(){
         url:"/addproject/",
         method:"POST",
         data:data,
-        success:function(res){
-            alert(res);
+        success:function(response){
+           // ajax done
+           // do whatever & close the modal
+           $('.modal-content').html(response); // should check if with validation errors
+
         }
 
             });

@@ -1,12 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+'''
 class Team(models.Model):
     teamname = models.CharField(max_length=20)
     team_creation_date = models.DateTimeField(auto_now_add=True,null=True)
 
     def __unicode__(self):
-        return self.teamname
+        return self.teamname'''
 
 '''
 class Users(models.Model):
@@ -26,7 +26,7 @@ class Users(models.Model):
 
 
 class Projects(models.Model):
-    user = models.ForeignKey(User, null=True, blank=True,related_name="projectassignedto")
+    user = models.ForeignKey(User,null = True)
     project_title = models.CharField(max_length=200)
     project_description = models.CharField(max_length=3000)
     duration = models.CharField(max_length=100, null=True, blank=True)
@@ -39,14 +39,13 @@ class Projects(models.Model):
 
 
 class Task(models.Model):
+    user = models.ForeignKey(User,null = True)
     project = models.ForeignKey(Projects, blank=True, null=True)
-    user = models.ForeignKey(User, null=True, blank=True,  related_name='user_created')
     taskname = models.CharField(max_length=500)
     task_desc = models.CharField(max_length=3000, null=True, blank=True)
     #completed = models.BooleanField(default=False)
     start_date = models.DateTimeField(null=True, blank=True)
     end_date = models.DateTimeField(null=True, blank=True)
-    assigned_to = models.ForeignKey(User, null=True, blank=True,  related_name='user_assignedto')
     created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     def __unicode__(self):

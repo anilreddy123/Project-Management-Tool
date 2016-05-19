@@ -24,9 +24,6 @@ class RegistrationForm(forms.Form):
 
 
 
-class TeamForm(forms.ModelForm):
-    class Meta:
-        model = Team
 
 class ProjectsForm(forms.ModelForm):
      class Meta:

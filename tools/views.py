@@ -42,7 +42,8 @@ def logout_page(request):
 
 @login_required
 def home(request):
-    return render_to_response('home.html',{'user':request.user})
+    user_list = User.objects.all()
+    return render_to_response('home.html',{'user':request.user, 'user_list':user_list})
 
 
 
@@ -56,10 +57,12 @@ def addproject(request):
            project_creation_date = datetime.now() #request.POST.get('project_creation_date','')
            #start_date = request.POST.get('start_date','')
            #end_date = request.POST.get('end_date','')
-           project_obj = Projects(project_title = project_title,project_description = project_description,project_creation_date = project_creation_date)
+           assignee = request.POST['p_assign']
+           get_assignee = User.objects.get(username = str(assignee))
+           project_obj = Projects(user = get_assignee, project_title = project_title, project_description = project_description,project_creation_date = project_creation_date)
            project_obj.save()
-
-           return HttpResponse('project created')
+           html = "Project created"
+           return HttpResponse(html)
 
     else:
         # If the request was not a POST, display the form to enter details.
@@ -67,7 +70,7 @@ def addproject(request):
 
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
-    return render(request, 'assignproject.html', locals())
+    return render(request, 'assignproject.html')
 
 
 @csrf_protect
