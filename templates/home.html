@@ -265,10 +265,10 @@ $("#create").click(function(){
         method:"POST",
         data:data,
         success:function(response){
+
            // ajax done
            // do whatever & close the modal
            $('.modal-content').html(response); // should check if with validation errors
-
         }
 
             });
