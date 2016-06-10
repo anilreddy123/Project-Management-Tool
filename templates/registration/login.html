@@ -1,4 +1,4 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 {% block content %}
 
     <html lang="en" xmlns="http://www.w3.org/1999/html">
@@ -17,16 +17,17 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
   </head>
-  <body>
+  <body >
 
-    <div class="jumbotron" style="height:100%;background-image: url(/media/images/img.jpg);background-repeat: no-repeat;background-size:100% 100% ">
+    <div class="jumbotron" style="height:100%; background-color:#1da1f2;">
         <div class="container-fluid" style="">
-	        <div class="col-sm-8">
+
+		 <div class="col-sm-8">
 
             </div>
 
             <div class="col-sm-4">
-                <div class="pnel panel-default" style="background-color:#000000; margin:0px 20px 0px 20px;margin-top:60px">
+                <div class="pnel panel-default" style="background-color:white; margin:0px 0px 20px;margin-top:60px">
                     <div class="panel-heading" style="background-color:lightgreen">
                         <strong> Log In </strong>
                     </div>
@@ -46,8 +47,8 @@
                                 <input type="password" class="form-control" placeholder="Enter Password"  {{ form.password }}
                             </div>
                             <div align="right">
-                                <input type="submit" value="Log In" class="btn btn-success " style="border-color:#2e6da4;background-color: #2e6da4;"/>
-                                <input type="hidden" name="next" value="/home" />
+                                <input type="submit" value="Log In" class="btn btn-success " style="border-color:#1da1f2;background-color:#1da1f2;"/>
+
                             </div>
                         </form><hr/>
                         <div class="signup" style="text-align: center;margin-top:15px;">
@@ -57,6 +58,7 @@
 
                 </div>
             </div>
+
 
         </div>
 

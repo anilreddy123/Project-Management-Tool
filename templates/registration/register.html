@@ -30,7 +30,7 @@
                     </div>
                     <div class="panel-body">
                         {% if form.errors %}
-                        <ul class="errorlist"><li>The username already exists. Please try another one.</li></ul>
+                        <ul class="errorlist"><li style="color:green" >The username already exists. Please try another one.</li></ul>
                         {% endif %}
                         <form role="form" method="post" action=".">{% csrf_token %}
                             <br/>
