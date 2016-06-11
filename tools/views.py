@@ -92,19 +92,21 @@ def addtask(request):
     return HttpResponse("Task Created")
 
 @csrf_protect
+@login_required
 def get_project(request):
     print "Here getproject"
-    projects = Projects.objects.filter(user = request.user)
+    projects = Projects.objects.filter(user = request.user.id)
     #projects = Projects.objects.filter(user)
 
     return render(request,"getproject.html", {'projects':projects,})
 
 
 @csrf_protect
+@login_required
 def get_task(request, id=None):
     print "Here gettask"
     #get_user = User.objects.get(user=request.user)
-    get_projects = Projects.objects.filter(user = request.user)
+    get_projects = Projects.objects.filter(user = request.user.id)
     if id is not None:
         tasks = Task.objects.filter(project = id)
     else:
