@@ -91,6 +91,7 @@ def addtask(request):
     create_task.save()
     return HttpResponse("Task Created")
 
+
 @csrf_protect
 @login_required
 def get_project(request):
