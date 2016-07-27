@@ -30,8 +30,19 @@
                     </div>
                     <div class="panel-body">
                         {% if form.errors %}
-                        <ul class="errorlist"><li style="color:green" >The username already exists. Please try another one.</li></ul>
-                        {% endif %}
+                                                {% for field in form %}
+                                                    {% for error in field.errors %}
+                                                        <div class="alert alert-error" style="color:green">
+                                                                <strong>{{ error|escape }}</strong>
+                                                         </div>
+                                                    {% endfor %}
+                                                {% endfor %}
+                                                {% for error in form.non_field_errors %}
+                                                        <div class="alert alert-error" style="color:green">
+                                                         <strong>{{ error|escape }}</strong>
+                                                        </div>
+                                                {% endfor %}
+                          {% endif %}
                         <form role="form" method="post" action=".">{% csrf_token %}
                             <br/>
                             <div class="form-group input-group">
