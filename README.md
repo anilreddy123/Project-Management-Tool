@@ -20,8 +20,3 @@ Deploying to apcera
 
 Deploying first time (configuration from continuum.conf)
 
-$ apc target https://runq-sd-d.qualcomm.com $ apc app create
-
-Update app for subsequent deployments
-
-$ apc target https://runq-sd-d.qualcomm.com $ apc app deploy
